@@ -113,7 +113,7 @@ struct Expense {
         proposalCount++;
     }
 
-    function approveExpense(uint256 _expenseId) external onlyBoardMember notApproved(_expenseId) notExecuted(_expenseId) {
+    function approveExpense(uint256 _expenseId) external onlyBoardMember notApproved(proposalCount) notExecuted(_expenseId) {
         Expense storage expense = proposals[_expenseId];
         expense.approvals[msg.sender] = true;
         expense.approvalCount++;
